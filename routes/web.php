@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', '\App\Http\Controllers\PostController@index');
+
+//definition avec un tableau
+Route::get('/', [PostController::class, 'index']);
 
 //route basique renvoyant un texte
 /* Route::get('posts', function () {
@@ -23,15 +25,15 @@ Route::get('/', function () {
 }); */
 
 //renvoyer une liste de post en json
-Route::get('posts', function () {
+/* Route::get('posts', function () {
     return response()->json([
         'title' => 'Apprendre Laravel',
         'description' => 'Formation par la pratique sur le framework Laravel 8',
     ]);
-});
+}); */
 
 //renvoyer une vue
-
+/*
 Route::get('articles', function () {
     return view('articles');
-});
+}); */
