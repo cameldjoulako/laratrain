@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', '\App\Http\Controllers\PostController@index');
 
-//definition avec un tableau
+/* //definition avec un tableau
 Route::get('/', [PostController::class, 'index']);
-
+ */
 //route basique renvoyant un texte
 /* Route::get('posts', function () {
     return "liste d'articles";
@@ -37,3 +37,9 @@ Route::get('/', [PostController::class, 'index']);
 Route::get('articles', function () {
     return view('articles');
 }); */
+
+
+//les vues avec blade
+Route::get('/', [PostController::class, 'index'])->name('accueil');
+Route::get('posts/{id}', [PostController::class, 'show'])->whereNumber('id');
+Route::get('contact', [PostController::class, 'contact'])->name('contact');

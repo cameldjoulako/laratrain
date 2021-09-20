@@ -41,4 +41,24 @@ class PostController extends Controller
         //passage de plusieurs parametres à la vue
         return view('articles', compact('posts'));
     }
+
+    public function show($id)
+    {
+        $posts = [
+            1 => 'Intelligence artificielle',
+            2 => 'Tout sur le web',
+            3 => 'Imagerie Radar'
+        ];
+
+        $post = $posts[$id] ?? "Pas de titre";
+
+        return view('article', [
+            'post' => $post
+        ]);
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
 }
