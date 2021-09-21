@@ -1,3 +1,4 @@
-require('./bootstrap');
+/* require('./bootstrap');
 
 alert('Homedeve Laravel Training')
+ */

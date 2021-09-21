@@ -13,7 +13,11 @@
 <body>
     @include('partials.navbar')
     {{-- on defini un contenu dynamique qui se placera ici --}}
-    @yield('content')
+
+
+    <div class="container mx-auto">
+        @yield('content')
+    </div>
 
     {{-- Importation du js --}}
     <script src="{{ asset('js/app.js') }}"></script>
