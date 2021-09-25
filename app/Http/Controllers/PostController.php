@@ -2,55 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index()
     {
-
-        $title = "Comprendre l'intelligence artificielle";
-        $title2 = "Tout sur le web";
-        $title3 = "Imagerie Radar";
-
-        //Recuperation des titres en bd
-        $posts = [
-            'Intelligence artificielle',
-            'Tout sur le web',
-            'Imagerie Radar'
-        ];
+        $posts = Post::all();
+        return view('articles', [
+            'posts' => $posts
+        ]);
 
 
-        //passsage de paramettre a la vue 1ere methode
-        //return view('articles', compact('title'));
-
-        //passsage de paramèttre à la vue 2e methode
-        //return view('articles')->with('title', $title);
-
-        //passage de plusieurs parametres à la vue
-        //return view('articles', compact('title', 'title2', 'title3'));
-
-        //passage de plusieurs parametres à la vue avec les tableaux clé valeur
-        /* return view('articles', [
-            'title' => $title,
-            'title2' => $title2,
-            'title3' => $title3,
+        /* modification */
+        /* $post = Post::find(2);
+        $post->update([
+            'title' => "L'ingénierie Logiciel por les nulls"
         ]); */
 
-
-        //passage de plusieurs parametres à la vue
-        return view('articles', compact('posts'));
+        /* Suppression */
+        /*  for ($i = 10; $i < 15; $i++) {
+            $article = Post::find($i);
+            $article->delete();
+        } */
     }
 
     public function show($id)
     {
-        $posts = [
+        /*  $posts = [
             1 => 'Intelligence artificielle',
             2 => 'Tout sur le web',
             3 => 'Imagerie Radar'
         ];
 
-        $post = $posts[$id] ?? "Pas de titre";
+        $post = $posts[$id] ?? "Pas de titre"; */
+
+        $post = Post::findOrfail($id);
+        /*
+        $post = Post::where('title', '=', 'Recusandae rerum ut ut nihil ab.')->firstOrFail();
+        //dd($post); */
 
         return view('article', [
             'post' => $post
@@ -60,5 +51,28 @@ class PostController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function create()
+    {
+        return view('form');
+    }
+
+    public function store(Request $request)
+    {
+        //dd($request->input('content'));
+        /* $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+         */
+
+        /* Bonne pratique */
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->content
+        ]);
+
+        return view('form');
     }
 }

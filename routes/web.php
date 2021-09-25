@@ -41,5 +41,9 @@ Route::get('articles', function () {
 
 //les vues avec blade
 Route::get('/', [PostController::class, 'index'])->name('accueil');
-Route::get('posts/{id}', [PostController::class, 'show'])->whereNumber('id');
+/* Route::get('posts/{id}', [PostController::class, 'show'])->whereNumber('id'); */
+/* Enregistrement d'un post */
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('posts/store', [PostController::class, 'store'])->name('posts.store');
+Route::get('posts/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('contact', [PostController::class, 'contact'])->name('contact');
