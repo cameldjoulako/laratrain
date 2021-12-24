@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 /* //definition avec un tableau
 Route::get('/', [PostController::class, 'index']);
  */
+
 //route basique renvoyant un texte
 /* Route::get('posts', function () {
     return "liste d'articles";
@@ -33,8 +34,8 @@ Route::get('/', [PostController::class, 'index']);
 }); */
 
 //renvoyer une vue
-/*
-Route::get('articles', function () {
+
+/* Route::get('articles', function () {
     return view('articles');
 }); */
 
@@ -42,8 +43,10 @@ Route::get('articles', function () {
 //les vues avec blade
 Route::get('/', [PostController::class, 'index'])->name('accueil');
 /* Route::get('posts/{id}', [PostController::class, 'show'])->whereNumber('id'); */
+
 /* Enregistrement d'un post */
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('posts/store', [PostController::class, 'store'])->name('posts.store');
+
 Route::get('posts/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('contact', [PostController::class, 'contact'])->name('contact');
