@@ -1,6 +1,10 @@
-$bg: rgba(45, 24, 238, 0.486);
+$bg: rgba(45, 24, 238, 0.959);
 
 body {
     background-color: $bg;
     //color: rgb(255, 255, 255);
+}
+
+nav ul li a {
+    color:rgb(45, 24, 238)
 }

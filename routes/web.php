@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,13 +41,15 @@ Route::get('/', [PostController::class, 'index']);
 }); */
 
 
-//les vues avec blade
+//les vues avec blade : les posts
 Route::get('/', [PostController::class, 'index'])->name('accueil');
 /* Route::get('posts/{id}', [PostController::class, 'show'])->whereNumber('id'); */
 
 /* Enregistrement d'un post */
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('ajouter-un-article', [PostController::class, 'create'])->name('posts.create');
 Route::post('posts/store', [PostController::class, 'store'])->name('posts.store');
 
-Route::get('posts/{id}', [PostController::class, 'show'])->name('posts.show');
-Route::get('contact', [PostController::class, 'contact'])->name('contact');
+Route::get('article/{id}', [PostController::class, 'show'])->name('posts.show');
+
+/* Contact routes */
+Route::get('contactez-nous', [ContactController::class, 'create'])->name('contact');
