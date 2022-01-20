@@ -2,6 +2,14 @@
 
 @section('content')
     <h1 class="my-5 mx-10">{{ $post->title }}</h1>
+
+    @if ($post->image)
+    <img src="{{  asset('images/'. $post->image->path) }}">
+    @else
+        <span class="text-red-500">Pas d'image</span>
+    @endif
+
+    {{-- <span>{{ $post->image }}</span> --}}
     <br>
     <p>{{ $post->content }}</p>
    {{--  @foreach ($post->comments as $comment)
@@ -11,7 +19,7 @@
     @forelse ( $post->comments as $comment )
         <p class="text-green-800 my-5 ml-10">{{ $comment->content }} </p>
     @empty
-        <p class="text-red-500 my-5 ml-10">Aucun commentaires</p>
+        <span class="text-red-500 my-5 ml-10">Aucun commentaires</span>
     @endforelse
 
 @endsection
