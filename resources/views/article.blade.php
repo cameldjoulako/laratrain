@@ -8,7 +8,7 @@
     @else
         <span class="text-red-500">Pas d'image</span>
     @endif
-
+    <hr>
     {{-- <span>{{ $post->image }}</span> --}}
     <br>
     <p>{{ $post->content }}</p>
@@ -21,5 +21,12 @@
     @empty
         <span class="text-red-500 my-5 ml-10">Aucun commentaires</span>
     @endforelse
+    <hr>
 
+    @forelse ($post->tags as $tag )
+        <span class="text-orange-600 ml-6">{{ $tag->name }} </span>
+
+    @empty
+        <span class="text-red-500">Aucun tag</span>
+    @endforelse
 @endsection
