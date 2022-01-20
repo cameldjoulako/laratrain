@@ -27,7 +27,7 @@ class PostController extends Controller
         /*  for ($i = 10; $i < 15; $i++) {
             $article = Post::find($i);
             $article->delete();
-        }
+        }*/
     }
 
     public function show($id)
