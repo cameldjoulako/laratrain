@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="my-10 h1">Liste des articles</h1>
+    <h1 class="my-10 ml-8 text-2xl text-blue-800">Liste des articles</h1>
     @if ($posts->count() > 0)
         @foreach ($posts as $post)
-            <h3> <a href="{{ route('posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a> </h3>
+            <h3 class="ml-10"> <a href="{{ route('posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a> </h3>
             <br>
         @endforeach
     @else

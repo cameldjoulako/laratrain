@@ -9,23 +9,25 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        //$posts = Post::all();
+        $posts = Post::orderBy('title')->get();
         return view('articles', [
             'posts' => $posts
         ]);
 
 
         /* modification */
-        /* $post = Post::find(2);
+       /*  $post = Post::find(6);
         $post->update([
-            'title' => "L'ingénierie Logiciel por les nulls"
+            'title' => "Deep learning pour la reconnaissanc de forme"
         ]); */
+
 
         /* Suppression */
         /*  for ($i = 10; $i < 15; $i++) {
             $article = Post::find($i);
             $article->delete();
-        } */
+        }
     }
 
     public function show($id)
