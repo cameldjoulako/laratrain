@@ -15,15 +15,14 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('content');
+            $table->string('content');
+
+            /*id de la video ou du post*/
+            $table->integer('commentable_id');
+
+            /*Modele parentt*/
+            $table->string('commentable_type');
             $table->timestamps();
-
-            //ancienne version
-            /* $table->unsignedBigInteger('post_id');
-            $table->foreign('post_id')->references('id')->on('posts'); */
-
-            //Nouvelle vervion laravel 7+
-            $table->foreignId('post_id')->constrained();
         });
     }
 
