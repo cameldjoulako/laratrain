@@ -25,4 +25,12 @@ class Post extends Model
     public function tags() {
         return $this->belongsToMany(Tag::class);
     }
+
+    /**
+     * Get the image's owner.
+     */
+    public function imageArtist()
+    {
+        return $this->hasOneThrough(Artist::class, Image::class);
+    }
 }

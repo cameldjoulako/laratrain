@@ -5,6 +5,9 @@
 
     @if ($post->image)
     <img src="{{  asset('images/'. $post->image->path) }}">
+
+    {{-- has one Through application --}}
+    <span>Nom de l'artiste de l'image : {{ $post ->imageArtist->name }}</span>
     @else
         <span class="text-red-500">Pas d'image</span>
     @endif
@@ -32,4 +35,7 @@
     @empty
         <span class="text-red-500">Aucun tag</span>
     @endforelse
+
+    <hr>
+
 @endsection
