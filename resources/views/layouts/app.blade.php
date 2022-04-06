@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
-<body>
+<body class="p-5">
     @include('partials.navbar')
     {{-- on defini un contenu dynamique qui se placera ici --}}
 
 
-    <div class="container">
+    <div class="container p-5">
         @yield('content')
     </div>
 

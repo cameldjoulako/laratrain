@@ -5,4 +5,3 @@
         <li> <a href="{{ route('contact') }}">Contactez-nous</a></li>
     </ul>
 </nav>
-²

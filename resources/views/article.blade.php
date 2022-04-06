@@ -12,16 +12,19 @@
     {{-- <span>{{ $post->image }}</span> --}}
     <br>
     <p>{{ $post->content }}</p>
+
    {{--  @foreach ($post->comments as $comment)
         <p class="text-green-800 my-5 ml-10>{{ $comment->content }}</p>
     @endforeach --}}
+
     {{-- deuxieme methode --}}
-   {{--  @forelse ( $post->comments as $comment )
-        <p class="text-green-800 my-5 ml-10">{{ $comment->content }} </p>
+    @forelse ( $post->comments as $comment )
+        <p class="text-green-800 my-5 ml-10">{{ $comment->content }} | Crée le {{ $comment->created_at->format('d/m/Y') }} </p>
     @empty
         <span class="text-red-500 my-5 ml-10">Aucun commentaires</span>
-    @endforelse --}}
+    @endforelse
     <hr>
+
 
     @forelse ($post->tags as $tag )
         <span class="text-orange-600 ml-6">{{ $tag->name }} </span>

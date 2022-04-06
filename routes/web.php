@@ -53,3 +53,6 @@ Route::get('article/{id}', [PostController::class, 'show'])->name('posts.show');
 
 /* Contact routes */
 Route::get('contactez-nous', [ContactController::class, 'create'])->name('contact');
+
+
+Route::get('polymorphic-registration', [PostController::class, 'register']);
