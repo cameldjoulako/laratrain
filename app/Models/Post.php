@@ -33,4 +33,24 @@ class Post extends Model
     {
         return $this->hasOneThrough(Artist::class, Image::class);
     }
+
+
+     /**
+ * Get the user's most recent Comment.
+ */
+public function latestComment()
+{
+    return $this->hasOne(Comment::class)->latestOfMany();
+}
+
+
+/**
+ * Get the user's oldest comment.
+ */
+public function oldestComment()
+{
+    return $this->hasOne(Comment::class)->oldestOfMany();
+}
+
+
 }
