@@ -65,12 +65,66 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+
+        //HTTP request
+
+        /* store un fichier */
+        dd($request->avatar->store('avatars'));
+
+
+         /* Récuperer un fichier */
+         dd($request->file('avatar'));
+
+        /* Récuperer tout sauf le cetain champ */
+        dd($request->except(['_token']));
+
+        /* Récuperer une portion des champs du formulaire */
+        dd($request->only(['_token', 'scales']));
+
+        /* traitement des checbox avec des boolean */
+        dd($request->boolean('scales'), $request->boolean('horns'));
+
+
+
+        /* tout les input
+        dd($request->all());
+
+         /* recuperer une valeur depuis l'url*/
+         //dd($request->query('name'));
+
+
+        /* vérifie la method s*/
+        //dd($request->isMethod('GET'));
+
+        /* récuperer la method sur laquelle on poste le formulaire*/
+        //dd($request->method());
+
+        /* récuperer l'url avec les parametres et ajouté une requete d'ajout de clé*/
+        //dd($request->fullUrlWithQuery(['name' => "CamelDjoulako"]));
+
+        /* récuperer l'url avec les parametres*/
+        //dd($request->FullUrl());
+
+
+        /* récuperer l'url */
+        //dd($request->url());
+
+       /*  dd($request->routeIs('posts.store'));
+        dd($request->is('admin/posts/*'));
+        dd($request->path()); */
+
+         //dd($request->input(('title'))); //ou
+         //dd($request->title); */
+
+
+
+
         //dd($request->input('content'));
         /* $post = new Post();
         $post->title = $request->title;
         $post->content = $request->content;
         $post->save();
-         */
+        */
 
         /* Bonne pratique */
         Post::create([
@@ -98,7 +152,6 @@ class PostController extends Controller
         ]);
 
         $video->comments()->save($comment3);
-
         //dd($post);
     }
 }

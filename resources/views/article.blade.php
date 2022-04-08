@@ -39,7 +39,7 @@
     <hr>
 
     {{-- Has One Of Many RelationShip --}}
-    <span> Commentaire le plus recent : {{ $post->latestComment->content }}</span>
+    {{-- <span> Commentaire le plus recent : {{ $post->latestComment->content }}</span> --}}
     {{-- Has One Of Many RelationShip --}}
     {{-- <span> Commentaire le plus ancien : {{ $post->oldestComment->content }}</span> --}}
 
