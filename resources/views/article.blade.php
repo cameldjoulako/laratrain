@@ -4,10 +4,11 @@
     <h1 class="my-5 mx-10">{{ $post->title }}</h1>
 
     @if ($post->image)
-    <img src="{{  asset('images/'. $post->image->path) }}">
+    {{-- <img src="{{  asset('images/'. $post->image->path) }}"> --}}
+    <img src="{{  Storage::url($post->image->path) }}" alt="{{ $post->title }}">
 
     {{-- has one Through application --}}
-    <span>Nom de l'artiste de l'image : {{ $post ->imageArtist->name }}</span>
+    {{-- <span>Nom de l'artiste de l'image : {{ $post ->imageArtist->name }}</span> --}}
     @else
         <span class="text-red-500">Pas d'image</span>
     @endif

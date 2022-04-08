@@ -11,17 +11,16 @@
 
     <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="title" id="title" class="border-gray-600 border-2">
-        <textarea name="content" id="content" cols="30" rows="10" class="border-gray-600 border-2"></textarea>
+        <input type="text" name="title" id="title" class="border-gray-600 border-2 block my-2">
+        <textarea name="content" id="content" cols="30" rows="10" class="border-gray-600 border-2 block my-2"></textarea>
 
-        <{{-- div>
+        <label for="avatar">Image de mise en avant</label>
+        <input type="file" name="avatar" id="avatar" accept="image/png, image/jpeg" class="block my-2">
+
+        {{--< div>
             <input type="checkbox" name="scales" id="scales" checked>
             <label for="scales">Scales</label>
         </>
-
-        <label for="avatar">Choisir une image de mise en avant</label>
-        <input type="file" name="avatar" id="avatar" accept="image/png, image/jpeg">
-
         <div>
             <input type="checkbox" name="horns" id="horns" checked>
             <label for="horns">Horns</label>

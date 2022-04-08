@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Video;
+use App\Models\Comment;
+use App\Models\Image;
 use App\Rules\Uppercase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -67,18 +69,34 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $uppercase = new Uppercase;
+
         /* Validation du formulaire */
         $request->validate([
             'title' => 'required|min:5|max:200|unique:posts',
-            'content' => ['required', 'min:5', $uppercase]
+            'content' => ['required', 'min:5']
         ]);
 
+        $fileName = time() . '.' . $request->avatar->extension();
+        $path = $request->avatar->storeAs(
+            'avatars',
+            $fileName,
+            'public'
+        );
 
-        Post::create([
+        //Storage::disk('local')->put('example.txt', 'Contents');
+
+        $post = Post::create([
             'title' => $request->title,
             'content' => $request->content
         ]);
+
+        $image = new Image();
+        $image->path = $path;
+        $post->image()->save($image);
+
+        /* manuellement ca donne:
+        $image->post_id = $post->id; */
+
 
         return view('form');
 
